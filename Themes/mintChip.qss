@@ -1,0 +1,1595 @@
+OBSThemeMeta {
+    dark: 'true';
+    author: 'Asriel Dreemurr (Azi) ♡';
+}
+
+OBSTheme {
+	window: palette(base);
+	base: rgb(32, 39, 47);
+	alternateBase: palette(dark);
+	text: rgb(238, 238, 238);
+	
+	light: rgb(87, 107, 126);
+	mid: rgb(47, 57, 66);
+	dark: rgb(14, 31, 39);
+	shadow: rgb(9, 22, 30);
+	
+	button: palette(mid);
+	highlight: rgb(33, 202, 161);
+}
+
+
+OBSTheme::disabled {
+	text: #eeeeee40;
+}
+
+/* #region OBS Colors */
+
+/* OBSTheme {
+    window: rgb(31,33,42);
+    windowText: rgb(255,254,255);
+
+    base: rgb(43,46,56);
+    alternateBase: rgb(11,10,11);
+
+    text: rgb(255,254,255);
+    
+    button: rgb(60,64,75);
+    buttonText: rgb(255,254,255);
+
+    brightText: rgb(255,254,255);
+
+    light: rgb(88,87,88);
+    mid: rgb(31,33,42);
+    dark: rgb(43,46,56);
+    shadow: rgb(11,10,11);
+
+    primary: rgb(40,76,184);
+    primaryLight: rgb(54,92,192);
+    primaryDark: rgb(25,27,38);
+
+    highlight: rgb(42,130,218);
+    highlightText: rgb(255,254,255);
+
+    link: rgb(77,166,255);
+    linkVisited: rgb(77,166,255);
+}
+
+OBSTheme::disabled {
+    windowText: rgb(153,153,153);
+    text: rgb(153,153,153);
+    button: rgb(27,29,34);
+    
+    buttonText: rgb(43,46,56);
+    brightText: rgb(43,46,56);
+}
+
+OBSTheme::inactive {
+    text: rgb(255,254,255);
+    
+    highlight: rgb(25,28,34);
+    highlightText: rgb(255,255,255);
+} */
+
+/* #endregion */
+
+/* #region Universal Elements */
+
+	/* #region Primary Elements */
+	* {
+		color: palette(text);
+		font-family: "SF Compact Rounded", "Arial Rounded MT", Noto Sans, "Segoe UI", Helvetica, Tahoma, Arial;
+
+		font-weight: bold;
+		font-size: 14px;
+		
+		margin: 0px;
+		padding: 0px;
+		border: none;
+		border-radius: 0px;
+		background-color: transparent;
+		position: relative;
+
+		text-overflow: ellipsis;
+	}
+
+	*:disabled {
+		color: palette(light); /* Disabled Text Color */
+	}
+
+	QMainWindow,
+	QDialog,
+	QWidget {
+		background-color: palette(base); /* Window Background */
+		alternate-background-color: palette(base);
+		selection-background-color: palette(highlight); 
+		selection-color: palette(text); 
+		outline: none;
+
+		qproperty-windowIcon: url(./Mintchip/icon_256x256.png); /* Window Icon */
+	}
+
+	QFrame,
+	QLabel {
+		background-color: transparent;
+	}
+
+	QMainWindow {
+		padding: 16px;
+	}
+
+	/* QWidget::item:hover {
+		background-color: palette(mid); 
+	} */ /* Hover Background */
+
+	QSizeGrip {
+		image: url(./Mintchip/Controls/arrow-down-right.svg);
+		min-width: 8px;
+		min-height: 8px;
+		margin: 0px;
+	} /* Widget Size Grips */
+
+		/* #region Dock Separators */
+			QMainWindow::separator {
+				border-radius: 2px;
+				background-color: rgba(87, 107, 126, 0.1);
+			}
+
+			QMainWindow::separator:vertical {
+				width: 6px;
+				margin: 16px 2px;
+			}
+
+			QMainWindow::separator:horizontal {
+				height: 6px;
+				margin: 2px 16px;
+			}
+
+			QMainWindow::separator:hover {
+				background-color: palette(light);
+			}
+		/* #endregion */
+
+	/* #endregion */
+
+	/* #region Buttons */
+		QPushButton,
+		QToolButton {
+			border-radius: 6px;
+			color: palette(text);
+			background-color: palette(mid);
+		}
+
+		QPushButton {
+			padding: 4px 12px;
+			min-width: 36px;
+		}
+		
+		QPushButton:hover,
+		QToolButton:hover,
+		QTabBar::tab:!selected:hover {
+			background: palette(light);
+		}
+
+		QPushButton:pressed,
+		QToolButton:pressed,
+		QPushButton:checked:pressed {
+			background: palette(highlight);
+		}
+	/* #endregion */
+
+	/* #region Docks */
+		QDockWidget > QWidget > QWidget {
+			padding: 8px 16px;
+		}
+
+		QDockWidget {
+			background: palette(base);
+			min-width: 320px;
+		}
+
+		QDockWidget::title {
+			background: palette(base);
+			padding: 12px 0px 0px 0px;
+			margin: 0px;
+			subcontrol-position: center center;
+		}
+
+		QDockWidget::title:closable {
+			margin-left: 8px;
+		} /* Fixes Alignment Issue When Closable */
+
+		QDockWidget::title:!movable {
+			margin-left: 18px;
+		} /* Fixes Alignment Issue When Locked */
+
+		QDockWidget {
+			titlebar-close-icon: url('./Mintchip/close.svg');
+			titlebar-normal-icon: url('./Mintchip/window.svg');
+		}
+
+		QDockWidget::close-button, QDockWidget::float-button {
+			border-radius: 6px;
+			background-color: transparent;
+
+			icon-size: 36px;
+
+			min-width: 16px;
+			min-height: 16px;
+			max-width: 16px;
+			max-height: 16px;
+
+			top: -4px;
+		}
+
+		QDockWidget::float-button {
+			subcontrol-position: right center;
+			right: 24px;
+			padding: 5px;
+		}
+
+		QDockWidget::close-button {
+			subcontrol-position: left center;
+			left: 16px;
+			padding: 4px;
+			margin-right: 16px;
+		}
+
+		QDockWidget::close-button:hover, QDockWidget::float-button:hover {
+			background-color: palette(mid);
+		}
+
+		QDockWidget::close-button:pressed, QDockWidget::float-button:pressed {
+			padding: 1px -1px -1px 1px;
+			background-color: palette(mid);
+		}
+	/* #endregion */
+
+	/* #region Lists */
+		QListWidget, QListWidget > *, QListWidget::item {
+			background-color: palette(shadow);
+			border-radius: 6px;
+			padding: 8px;
+		}
+
+		/* QListWidget * {
+			background-color: palette(shadow);
+		} */
+
+		QListWidget::item {
+			margin-bottom: 4px;
+			min-height: 26px;
+			margin-right: 8px;
+		}
+
+
+
+		QListWidget::item:selected {
+			background-color: palette(dark);
+		}
+
+		QListWidget::item:hover,
+		QListWidget::item:disabled:hover,
+		QListWidget::item:hover:!active {
+			background-color: palette(mid);
+		}
+
+		.QVBoxLayout {
+			background: palette(shadow);
+			border-radius: 6px;
+		}
+	/*#endregion*/
+
+	/* #region Menus */
+		QMenuBar::item {
+			background: palette(base);
+			padding: 4px;
+			margin-right: 4px;
+		}
+
+		QMenuBar::item:selected {
+			background-color: palette(highlight);
+			color: palette(shadow);
+			border-radius: 4px;
+		}
+
+		QMenuBar::item:pressed {
+			border: none;
+			background-color: rgb(163, 255, 231);
+			margin-bottom: -1px;
+			padding-bottom: 1px;
+			color: palette(shadow);
+		}
+
+		QMenu {
+			padding: 8px;
+			background: rgba(32, 39, 47, 0.99);
+			border-radius: 6px;
+		}
+
+		QMenu::item {
+			padding: 6px 8px;
+			padding-right: 16px;
+		}
+
+		QMenu::indicator {
+			padding-left: 8px;
+			width: 14px;
+			height: 14px;
+		}
+
+		QMenu::separator {
+			background-color: rgba(47, 57, 66, 0.75);
+			border-radius: 1px;
+			height: 2px;
+			margin: 6px;
+		}
+
+		QMenu::item:selected {
+			background-color: palette(mid);
+			border-radius: 4px;
+		}
+
+		QMenu::indicator:non-exclusive:unchecked {
+		image: url(./Mintchip/Controls/square.svg);
+		}
+
+		QMenu::indicator:non-exclusive:unchecked:selected {
+		image: url(./Mintchip/Controls/square-hover.svg);
+		}
+
+		QMenu::indicator:non-exclusive:checked {
+		image: url(./Mintchip/Controls/square-full.svg);
+		}
+
+		QMenu::indicator:non-exclusive:checked:selected {
+		image: url(./Mintchip/Controls/square-full-hover.svg);
+		}
+	/* #endregion */
+
+	/* #region Scrollbars */
+		QScrollBar {
+			border-radius: 8px;
+			background-color: rgb(6, 15, 19);
+		}
+
+		QScrollBar::up-arrow,
+		QScrollBar::down-arrow,
+		QScrollBar::add-page {
+			background: none;
+		}
+
+		QScrollBar::handle {
+			background-color: palette(mid);
+			min-width: 3px;
+			min-height: 3px;
+			margin: 3px;
+			border-radius: 5px;
+			width: 10px;
+			height: 10px;
+			padding: 0px;
+		}
+
+		QScrollBar::handle:hover {
+			background-color: palette(light);
+		}
+
+		QAbstractScrollArea::corner {
+			width: 12px;
+			height: 12px;
+			margin: 2px;
+			border: none;
+			border-radius: 6px;
+			background-color: rgb(6, 15, 19);
+		}
+
+		QScrollBar:horizontal {
+			height: 16px;
+		}
+
+		QScrollBar:vertical {
+			width: 16px;
+		}
+
+		QScrollBar::add-page,
+		QScrollBar::sub-page {
+			background-color: transparent;
+		}
+
+		QScrollBar::add-line:horizontal,
+		QScrollBar::sub-line:horizontal,
+		QScrollBar::add-line:horizontal:hover,
+		QScrollBar::add-line:horizontal:on,
+		QScrollBar::sub-line:horizontal:hover,
+		QScrollBar::sub-line:horizontal:on,
+		QScrollBar::add-line:vertical,
+		QScrollBar::sub-line:vertical,
+		QScrollBar::add-line:vertical:hover,
+		QScrollBar::add-line:vertical:on,
+		QScrollBar::sub-line:vertical:hover,
+		QScrollBar::sub-line:vertical:on {
+			margin: 0px;
+			border-image: none;
+			height: 0px;
+			width: 0px;
+		}
+
+		QScrollBar::add-line:horizontal,
+		QScrollBar::add-line:horizontal:hover,
+		QScrollBar::add-line:horizontal:on {
+			subcontrol-position: right;
+			subcontrol-origin: margin;
+		}
+
+		QScrollBar::sub-line:horizontal,
+		QScrollBar::sub-line:horizontal:hover,
+		QScrollBar::sub-line:horizontal:on {
+			subcontrol-position: left;
+			subcontrol-origin: margin;
+		}
+
+		QScrollBar::sub-line:vertical,
+		QScrollBar::sub-line:vertical:hover,
+		QScrollBar::sub-line:vertical:on {
+			subcontrol-position: top;
+			subcontrol-origin: margin;
+		}
+
+		QScrollBar::add-line:vertical,
+		QScrollBar::add-line:vertical:hover,
+		QScrollBar::add-line:vertical:on {
+			subcontrol-position: bottom;
+			subcontrol-origin: margin;
+		}
+	/* #endregion */
+
+	/* #region Tabs */
+		QTabWidget::pane {
+			border: none;
+			border-radius: 0px;
+			padding: 8px;
+			background-color: transparent;
+		}
+
+		QTabWidget::tab-bar {
+			top: 8px;
+			border: none;
+			background-color: transparent;
+		}
+
+		QTabBar {
+			border-radius: 0px;
+		}
+
+		QTabBar::close-button {
+			image: url(./Mintchip/close.svg);
+			background: transparent;
+		}
+
+		QTabBar::close-button:hover {
+			background: palette(mid);
+		}
+
+		QTabBar::close-button:pressed {
+			image: url(./Mintchip/close.svg);
+			background: palette(light);
+		}
+
+		QTabBar::tab {
+			background-color: palette(highlight);
+			color: palette(shadow); 
+			border-radius: 4px;
+			margin: 2px;
+			padding: 8px;
+			min-width: 50px;
+		}
+
+		QTabBar::tab:!selected {
+			background-color: palette(mid);
+			color: palette(text);
+		}
+	/* #endregion */
+
+	/* #region Toolbars */
+		QToolBar {
+			background-color: palette(shadow);
+			border-radius: 6px;
+			margin: 8px 0px 0px 0px;
+			min-height: 48px;
+			max-height: 48px;
+		}
+
+		QToolBar > QToolButton {
+			subcontrol-position: left top;
+			padding: 4px;
+			margin: 8px 4px 0px 0px;
+			min-height: 16px;
+			min-width: 16px;
+		}
+
+		QToolBar::separator {
+			border: none;
+			background-color: rgba(47, 57, 66, 0.5);
+			border-radius: 1px;
+			height: 2px;
+			width: 2px;
+			margin: 8px 4px 0px 0px;
+		}
+	/* #endregion */
+
+	/* #region Spinboxes */
+		QAbstractSpinBox {
+			padding: 8px;
+			border: 0px solid palette(light);/* Light Gray */
+			background-color: palette(shadow);
+			color: palette(text); /* White */
+			border-radius: 6px;
+			min-width: 75px;
+		}
+
+		QAbstractSpinBox:up-button {
+			background-color: transparent;
+			subcontrol-origin: border;
+			subcontrol-position: top right;
+			margin-right: 4px;
+		}
+
+		QAbstractSpinBox:down-button {
+			background-color: transparent;
+			subcontrol-origin: border;
+			subcontrol-position: bottom right;
+			margin-right: 4px;
+		}
+
+		QAbstractSpinBox::up-arrow,
+		QAbstractSpinBox::up-arrow:disabled,
+		QAbstractSpinBox::up-arrow:off {
+			image: url(./Mintchip/Controls/angle-up-disabled.svg);
+			width: 16px;
+			height: 16px;
+		}
+
+		QAbstractSpinBox::up-arrow:hover {
+			image: url(./Mintchip/Controls/angle-up.svg);
+		}
+
+		QAbstractSpinBox::down-arrow,
+		QAbstractSpinBox::down-arrow:disabled,
+		QAbstractSpinBox::down-arrow:off {
+			image: url(./Mintchip/Controls/angle-down-disabled.svg);
+			width: 16px;
+			height: 16px;
+		}
+
+		QAbstractSpinBox::down-arrow:hover {
+			image: url(./Mintchip/Controls/angle-down.svg);
+		}
+	/* #endregion */
+
+	/* #region Textboxes */
+		QLineEdit {
+			background-color: palette(shadow);
+			padding: 8px;
+			border: 0px solid palette(light);
+			border-radius: 6px;
+			min-height: 16px;
+		}
+
+		QLineEdit:focus {
+			color: white;
+		}
+
+		QListWidget QLineEdit {
+			padding-top: 0;
+			padding-bottom: 0;
+			padding-right: 0;
+			padding-left: 2px;
+			border: none;
+			border-radius: none;
+		}
+	/* #endregion */
+
+	/* #region Checkboxes */
+		QCheckBox {
+			spacing: 5px;
+			outline: none;
+			color: palette(text);
+			margin-bottom: 2px;
+			padding: 4px;
+			border-radius: 6px;
+			min-height: 26px;
+		}
+
+		QCheckBox:hover, QCheckBox:focus {
+			color: palette(text);
+			background-color: rgba(9, 22, 30,0.5);
+		}
+
+		QCheckBox:disabled {
+			color: palette(light);
+		}
+
+		QCheckBox::indicator,
+		QGroupBox::indicator {
+			width: 18px;
+			height: 18px;
+		}
+
+		QGroupBox::indicator {
+			margin-left: 2px;
+		}
+
+		QCheckBox::indicator:unchecked {
+			image: url(./Mintchip/Controls/square.svg);
+		}
+
+		QCheckBox::indicator:unchecked:hover,
+		QGroupBox::indicator:unchecked:hover {
+			border: none;
+			image: url(./Mintchip/Controls/square-hover.svg);
+		}
+
+		QCheckBox::indicator:checked {
+			image: url(./Mintchip/Controls/square-full.svg);
+		}
+
+		QCheckBox::indicator:checked:hover,
+		QGroupBox::indicator:checked:hover {
+			border: none;
+			image: url(./Mintchip/Controls/square-full-hover.svg);
+		}
+
+		QCheckBox::indicator:checked:disabled,
+		QGroupBox::indicator:checked:disabled {
+			image: url(./Mintchip/Controls/square-full-disabled.svg);
+		}
+
+		QCheckBox::indicator:unchecked:disabled,
+		QGroupBox::indicator:unchecked:disabled {
+			image: url(./Mintchip/Controls/square-disabled.svg);
+		}
+	/* #endregion */
+
+	/* #region Radio Buttons */
+		QRadioButton {
+			spacing: 5px;
+			outline: none;
+			color: palette(text);
+			margin-bottom: 2px;
+			padding: 4px;
+			border-radius: 6px;
+			min-height: 26px;
+		}
+
+		QRadioButton:disabled {
+			color: palette(light);
+		}
+
+		QRadioButton::indicator {
+			width: 18px;
+			height: 18px;
+		}
+
+		QRadioButton::indicator:unchecked {
+			image: url(./Mintchip/Controls/circle.svg);
+		}
+
+
+		QRadioButton::indicator:unchecked:hover,
+		QRadioButton::indicator:unchecked:focus,
+		QRadioButton::indicator:unchecked:pressed {
+			border: none;
+			outline: none;
+			image: url(./Mintchip/Controls/circle-hover.svg);
+		}
+
+		QRadioButton::indicator:checked {
+			border: none;
+			outline: none;
+			image: url(./Mintchip/Controls/circle-full.svg);
+		}
+
+		QRadioButton::indicator:checked:hover,
+		QRadioButton::indicator:checked:focus,
+		QRadioButton::indicator:checked:pressed {
+			border: none;
+			outline: none;
+			image: url(./Mintchip/Controls/circle-full-hover.svg);
+		}
+
+		QRadioButton::indicator:checked:disabled {
+			outline: none;
+			image: url(./Mintchip/Controls/circle-full-disabled.svg);
+		}
+
+		QRadioButton::indicator:unchecked:disabled {
+			image: url(./Mintchip/Controls/circle-disabled.svg);
+		}
+	/* #endregion */
+
+	/* #region Progress Bars */
+		QProgressBar {
+			border: 2px solid palette(mid);
+			border-radius: 4px;
+			text-align: center;
+		}
+
+		QProgressBar::chunk {
+			background-color: rgb(47, 194, 162);
+		}
+	/* #endregion */
+
+	/* #region Combo Boxes (List Box) */
+		QComboBox {
+			background-color: palette(shadow);
+			border: 0px solid rgb(118, 121, 124);
+			border-radius: 4px;
+			padding: 8px;
+			min-width: 64px;
+			margin-left: 0px;
+			margin-right: 8px;
+		}
+
+		QComboBox:on {
+			padding-top: 8px;
+			padding-left: 8px;
+		}
+
+		QComboBox QAbstractItemView {
+			background-color: palette(shadow); /* Dark Gray */
+			border-radius: 4px;
+			border: 0px transparent;
+		}
+
+		QComboBox::item {
+			padding: 4px;
+			max-height: 24px;
+			margin: 0px;
+			border-radius: 4px;
+			border: none;
+		}
+
+		QComboBox::item:selected {
+			background-color: palette(mid);
+		}
+
+		QComboBox::indicator {
+			padding-left: 8px;
+			width: 14px;
+			height: 14px;
+		}
+
+		QComboBox::drop-down {
+			subcontrol-origin: padding;
+			subcontrol-position: top right;
+			width: 30px;
+
+			border-left-width: 0;
+			border-left-color: palette(light);
+			border-left-style: solid;
+			border-top-right-radius: 3px;
+			border-bottom-right-radius: 3px;
+		}
+
+
+		QComboBox::down-arrow,
+		QComboBox::down-arrow:pressed,
+		QComboBox::down-arrow:focus {
+			image: url(./Mintchip/Controls/angle-down-disabled.svg);
+		}
+
+		QComboBox::down-arrow:on,
+		QComboBox::down-arrow:hover {
+			image: url(./Mintchip/Controls/angle-down.svg);
+			background-color: palette(shadow); /* Dark Gray */
+		}
+
+		/* #region OBS Settings Pane Fixes */
+		.OBSBasicSettings QComboBox QFrame {
+			padding: 8px;
+		}
+
+		.OBSBasicSetting QComboBox * {
+			margin: 20px;
+		}
+		/* #endregion */
+
+	/* #endregion */
+
+	/* #region Group Boxes */
+		QGroupBox {
+			border: 1px solid palette(mid);
+			border-radius: 6px;
+			padding-top: 16px;
+			margin-top: 20px;
+		}
+
+		QGroupBox::title {
+			color: rgb(47, 194, 162);
+			left: 20px;
+			padding-left: 5px;
+			padding-right: 4px;
+			padding-top: -14px;
+			font-size: 24px !important;
+		}
+	/* #endregion */
+
+	/* #region Splitters */
+
+		QSplitter::handle {
+			margin: 2px;
+			width: 2px;
+			height: 2px;
+			border-radius: 2px;
+			background-color: rgba(87, 107, 126, 0.1);
+		}
+
+		QSplitter::handle:hover {
+			background-color: palette(light);
+		}
+	/* #endregion */
+
+	/* #region Sliders */
+		QSlider:horizontal {
+			padding: 2px 4px -2px 4px;
+		}
+
+		QSlider::groove,
+		QSlider::sub-page,
+		QSlider::add-page {
+			border: none;
+			border-radius: 2px;
+		}
+
+		QSlider::groove:horizontal {
+			height: 4px;
+		}
+
+		QSlider::groove:vertical {
+			width: 4px;
+		}
+
+		QSlider::handle {
+			background-color: rgb(255, 255, 255);
+			border-radius: 6px;
+			height: 12px;
+			width: 12px;
+		}
+
+		QSlider::handle:horizontal {
+			margin: -4px 0;
+		}
+
+		QSlider::handle:vertical {
+			margin: 0px -4px;
+		}
+
+		QSlider::handle:hover {
+			background-color: rgb(163, 255, 231);
+		}
+
+		QSlider::handle:pressed {
+			background-color: rgb(200, 200, 200);
+		}
+
+		QSlider::sub-page:horizontal:disabled,
+		QSlider::groove:vertical:disabled {
+			background-color: palette(mid);
+		}
+
+		QSlider::add-page:horizontal,
+		QSlider::sub-page:vertical {
+			background-color: palette(mid);
+		}
+
+		QSlider::add-page:vertical,
+		QSlider::sub-page:horizontal {
+			background-color: palette(highlight);
+		}
+
+		QSlider::handle:disabled {
+			background-color: palette(light);
+		}
+
+		/* Context Container Fix */
+
+		#contextContainer QSlider:horizontal {
+				background: transparent;
+		}
+
+	/* #endregion */
+
+	/* #region NAME */
+
+	/* #endregion */
+
+/* #endregion */
+
+/* #region OBS Elements */
+
+	/* #region Theme Elements */
+
+		* [themeID="playIcon"] {
+		qproperty-icon: url(./Mintchip/play.svg);
+		}
+
+		* [themeID="pauseIcon"] {
+		qproperty-icon: url(./Mintchip/pause.svg);
+		}
+
+		* [themeID="restartIcon"] {
+		qproperty-icon: url(./Mintchip/refresh.svg);
+		}
+
+		* [themeID="stopIcon"] {
+		qproperty-icon: url(./Mintchip/stop.svg);
+		}
+
+		* [themeID="nextIcon"] {
+		qproperty-icon: url(./Mintchip/controls/angle-right.svg);
+		}
+
+		* [themeID="previousIcon"] {
+		qproperty-icon: url(./Mintchip/controls/angle-left.svg);
+		}
+
+		/* Standard Icons */
+
+		* [themeID="addIconSmall"] {
+		qproperty-icon: url(./Mintchip/plus.svg);
+		}
+
+		* [themeID="removeIconSmall"] {
+		qproperty-icon: url(./Mintchip/minus.svg);
+		}
+
+		* [themeID="propertiesIconSmall"] {
+		qproperty-icon: url(./Mintchip/Settings/cog.svg);
+		}
+
+		* [themeID="configIconSmall"] {
+		qproperty-icon: url(./Mintchip/Settings/cog.svg);
+		}
+
+		* [themeID="menuIconSmall"] {
+			qproperty-icon: url(./Mintchip/Controls/dots-vert.svg);
+		}
+
+		* [themeID="cogsIcon"] {
+		qproperty-icon: url(./Mintchip/Settings/cog.svg);
+		}
+
+		* [themeID="refreshIconSmall"] {
+		qproperty-icon: url(./Mintchip/refresh.svg);
+		}
+
+		* [themeID="upArrowIconSmall"] {
+		qproperty-icon: url(./Mintchip/controls/angle-up.svg);
+		}
+
+		* [themeID="downArrowIconSmall"] {
+		qproperty-icon: url(./Mintchip/controls/angle-down.svg);
+		}
+
+		* [themeID="pauseIconSmall"] {
+		qproperty-icon: url(./Mintchip/pause.svg);
+		}
+
+		* [themeID="revertIcon"] {
+		qproperty-icon: url(./Mintchip/undo.svg);
+		}
+
+		* [themeID="trashIconSmall"] {
+		qproperty-icon: url(./Mintchip/delete.svg);
+		}
+
+		* [themeID="trashIcon"] {
+		qproperty-icon: url(./Mintchip/delete.svg);
+		}
+
+		* [themeID="clearIconSmall"] {
+		qproperty-icon: url(./Mintchip/delete.svg);
+		}
+	/* #endregion */
+
+	/* #region Main Window */
+		OBSBasic {
+		qproperty-imageIcon: url(./Mintchip/Sources/image.svg);
+		qproperty-colorIcon: url(./Mintchip/Sources/brush.svg);
+		qproperty-slideshowIcon: url(./Mintchip/Sources/images.svg);
+		qproperty-audioInputIcon: url(./Mintchip/Sources/microphone.svg);
+		qproperty-audioOutputIcon: url(./Mintchip/Sources/sound.svg);
+		qproperty-desktopCapIcon: url(./Mintchip/Sources/monitor.svg);
+		qproperty-windowCapIcon: url(./Mintchip/Sources/window.svg);
+		qproperty-gameCapIcon: url(./Mintchip/Sources/default.svg);
+		qproperty-cameraIcon: url(./Mintchip/Sources/webcam.svg);
+		qproperty-textIcon: url(./Mintchip/Sources/text.svg);
+		qproperty-mediaIcon: url(./Mintchip/Settings/video.svg);
+		qproperty-browserIcon: url(./Mintchip/Sources/globe.svg);
+		qproperty-groupIcon: url(./Mintchip/Sources/folder.svg);
+		qproperty-sceneIcon: url(./Mintchip/Sources/scene.svg);
+		qproperty-defaultIcon: url(./Mintchip/Sources/default.svg);
+		qproperty-windowIcon: url(./Mintchip/icon_256x256.png);
+		qproperty-trashIcon: url(./Mintchip/delete.svg);
+
+		qproperty-dockNestingEnabled: true;
+		qproperty-unifiedTitleAndToolBarOnMac: false;
+		}
+
+		/* #region OBS Preview Window */
+				/* #centralWidget > QFrame {
+					margin: 4px;
+					padding: 4px;
+				} */
+
+				/* #centralWidget:first {
+					margin: 22px;
+				} */
+
+				OBSQTDisplay {
+					qproperty-displayBackgroundColor: palette(dark);
+				}
+
+				#previewLayout,
+				#previewDisabledWidget {
+					border-radius: 6px;
+					margin: 12px 6px 0px 6px;
+					padding: 0px;
+				}
+
+				#previewDisabledWidget,
+				#previewDisabledWidget > QFrame {
+					background-color: palette(dark);
+				}
+
+				
+				#contextSubContainer,
+				#contextSubContainer > QFrame,
+				#contextContainer > QFrame {
+					background-color: palette(shadow);
+				}
+
+				/* #region OBS Preview Controls */
+				#contextContainer {
+					margin-top: 8px;
+					padding: 0px;
+				}
+
+				#contextContainer > QFrame {
+					padding: 8px;
+					margin-bottom: 4px;
+					border-radius: 6px;
+					min-height: 24px;
+				}
+
+				#contextSubContainer {
+					padding-right: 0px; /* Fix padding on sub-container */
+				}
+
+				#sourcePropertiesButton {
+					icon: url(./Mintchip/Settings/cog.svg);
+				}
+
+				#sourceFiltersButton {
+					icon: url(./Mintchip/filter.svg);
+
+				}
+
+				/* #contextContainer > QFrame {
+					border-radius: 6px;
+					margin-bottom: 4px;
+					padding: 8px;
+					padding-right: 0px;
+					min-height: 24px;
+					height: 24px;
+				} */
+
+				/* #contextContainer > QFrame > * {
+					margin: 0px;
+				} */
+
+				#centralWidget QLabel {
+					max-height: 16px;
+				}
+
+			/* #endregion */
+
+			OBSBasicPreview > * {
+				margin: 4px;
+				border-radius: 6px;
+			}
+		/* #endregion */
+
+		SourceTree,
+		#stackedMixerArea,
+		#controlsDockContents {
+			padding: 8px;
+			border-radius: 6px;
+		}
+
+		#stackedMixerArea,
+		#controlsDockContents {
+			margin: 8px;
+		}
+
+		OBSBasicStatusBar::item {
+			border: 0px solid transparent;
+		}
+	/* #endregion */
+
+	/* #region Mute Toggles */
+		MuteCheckBox {
+			outline: none;
+			padding-right: -1px;
+			margin: 0px 4px 0px 0px;
+		}
+
+		MuteCheckBox::indicator:checked {
+			image: url(./Mintchip/Controls/mute.svg);
+		}
+
+		MuteCheckBox::indicator:unchecked {
+			image: url(./Mintchip/Controls/audio.svg);
+		}
+
+		MuteCheckBox::indicator:unchecked:hover {
+			image: url(./Mintchip/Controls/audio-hover.svg);
+		}
+
+		MuteCheckBox::indicator:unchecked:focus {
+			image: url(./Mintchip/Controls/audio-hover.svg);
+		}
+		MuteCheckBox::indicator:checked:hover {
+			image: url(./Mintchip/Controls/mute-hover.svg);
+		}
+
+		MuteCheckBox::indicator:checked:focus {
+			image: url(./Mintchip/Controls/mute-hover.svg);
+		}
+
+		MuteCheckBox::indicator:checked:disabled {
+			image: url(./Mintchip/Controls/mute.svg);
+		}
+
+		MuteCheckBox::indicator:unchecked:disabled {
+			image: url(./Mintchip/Controls/audio.svg);
+		}
+	/* #endregion */
+
+	/* #region Source Trees */
+		SourceTree, SourceTree > * {
+			background-color: palette(shadow);
+		}
+
+		SourceTree::item {
+			border-radius: 6px;
+			padding: 0px;
+		}
+
+		SourceTreeItem {
+			height: 26px;
+			padding: 8px 0px 8px 8px;
+		}
+
+		/* SourceTreeItem {
+			padding: 8px;
+			min-height: 26px;
+			border: none;
+			border-radius: 6px;
+			margin-bottom: 4px;
+		}
+
+		SourceTreeItem * {
+			min-height: 18px;
+			min-width: 18px;
+			padding: 0px;
+			margin: 0px;
+		} */
+
+		SourceTreeItem QCheckBox {
+			padding: 0px;
+			margin: 0px;
+		}
+
+		SourceTree::item:selected:!active {
+			color: rgb(239, 240, 241); /* White */
+			background-color: palette(dark); /* Light Pink (Secondary Light) */
+		}
+
+		SourceTree::item:selected {
+			background-color: palette(dark); /* Pink (Secondary) */
+		}
+
+		SourceTree::item:hover,
+		SourceTree::item:disabled:hover,
+		SourceTree::item:hover:!active {
+			background-color: palette(mid); /* Cyan (Primary) */
+			color: rgb(239, 240, 241); /* White */
+		}
+
+		SourceTree::item:disabled {
+			color: rgba(255,255,255,0.25);
+		}
+
+		SourceTree QLineEdit {
+			padding-top: 0;
+			padding-bottom: 0;
+			padding-right: 0;
+			padding-left: 2px;
+			border: none;
+			border-radius: none;
+			margin-top: 4px;
+			color: palette(shadow);
+		}
+		
+		SourceTreeSubItemCheckBox {
+			padding: 0px;
+			min-width: 20px;
+		}
+
+		SourceTreeSubItemCheckBox::indicator {
+			border-radius: 6px;
+			background-color: palette(mid);
+			width: 20px;
+			height: 20px;
+			margin: -10px 0px 0px 0px;
+		}
+
+		SourceTreeSubItemCheckBox::indicator:hover {
+			background-color: palette(light);
+		}
+
+		SourceTreeSubItemCheckBox::indicator:pressed {
+			background-color: palette(highlight);
+		}
+
+		SourceTreeSubItemCheckBox::indicator:checked,
+		SourceTreeSubItemCheckBox::indicator:checked:hover {
+			image: url(./Mintchip/Controls/angle-down.svg);
+		}
+
+		SourceTreeSubItemCheckBox::indicator:unchecked,
+		SourceTreeSubItemCheckBox::indicator:unchecked:hover {
+			image: url(./Mintchip/Controls/angle-up.svg);
+		}
+
+		OBSYoutubeActions {
+			qproperty-thumbPlaceholder: url(:res/images/sources/image.svg);
+		}
+	/* #endregion */
+
+	/* #region Folder/Visibility/Lock Icons */
+		VisibilityCheckBox,
+		LockedCheckBox,
+		SourceTreeSubItemCheckBox {
+		outline: none;
+		background: transparent;
+		}
+
+		VisibilityCheckBox::indicator,
+		SourceTreeSubItemCheckBox::indicator,
+		LockedCheckBox::indicator {
+		width: 18px;
+		height: 18px;
+		padding: 0px;
+		}
+
+		OBSBasicFilters VisibilityCheckBox::indicator {
+			margin-top: -8px;
+		}
+
+		VisibilityCheckBox::indicator:checked {
+		image: url(./Mintchip/Controls/eye.svg);
+		}
+
+		VisibilityCheckBox::indicator:unchecked {
+		image: url(./Mintchip/Controls/eye-slash.svg);
+		}
+
+		VisibilityCheckBox::indicator:checked:hover {
+		image: url(./Mintchip/Controls/eye-hover.svg);
+		}
+
+		VisibilityCheckBox::indicator:unchecked:hover {
+		image: url(./Mintchip/Controls/eye-slash-hover.svg);
+		}
+
+		LockedCheckBox::indicator:checked {
+		image: url(./Mintchip/Controls/locked.svg);
+		}
+
+		LockedCheckBox::indicator:unchecked {
+		image: url(./Mintchip/Controls/unlocked.svg);
+		}
+
+		LockedCheckBox::indicator:checked:hover {
+		image: url(./Mintchip/Controls/locked-hover.svg);
+		}
+
+		LockedCheckBox::indicator:unchecked:hover {
+		image: url(./Mintchip/Controls/unlocked-hover.svg);
+		}
+	/* #endregion */
+
+	/* #region Transition Controls */
+
+		#transitionsFrame {
+			padding: 0px 12px;
+			margin-top: -8px;
+			margin-bottom: -28px;
+		}
+
+		#transitionsDock {
+			padding: 0px;
+			margin: 0px;
+			min-height: 0px;
+			min-height: 168px;
+			max-height: 168px;
+		}
+
+		#transitions {
+			margin: 0px;
+			min-height: 24px;
+		}
+
+		#transitionDurationLabel {
+			margin-left: 0px;
+		}
+
+		#transitionProps,
+		#transitions {
+			margin-bottom: 8px;
+		}
+
+		#transitionsDock QPushButton {
+			margin: 8px 2px 0px 2px;
+		}
+
+		#transitionProps {
+			icon: url(./Mintchip/Settings/cog.svg);
+		}
+
+		#transitionProps:hover {
+			icon: url(./Mintchip/Controls/cog-selected.svg);
+		}
+
+		#transitionProps:open,
+		#transitionProps:focus {
+			icon: url(./Mintchip/Controls/cog-hover.svg);
+		}
+	/* #endregion */
+
+	/* #region Stream Control Buttons */
+		#controlsDockContents QPushButton {
+			margin: 2px 12px;
+			/* background-color: palette(mid); */
+		}
+
+		#controlsDockContents QPushButton:hover,
+		#controlsDockContents QPushButton:checked,
+		#modeSwitch:hover,
+		#modeSwitch:checked {
+			background-color: rgba(47, 194, 162, 180);
+			border: 1px solid rgba(47, 194, 162, 180);
+		}
+
+		#controlsDockContents QPushButton:pressed,
+		#modeSwitch:pressed {
+			background-color: rgb(47, 194, 162);
+			border: 1px solid rgb(47, 194, 162);
+		}
+
+		#controlsDockContents QPushButton[themeID="vcamButton"] {
+			margin-right: 4px;
+			padding-right: -16px;
+		}
+
+		#controlsDockContents QPushButton[themeID="configIconSmall"] {
+			margin-left: 0px;
+		}
+
+		QAbstractButton#streamButton,
+		QAbstractButton#recordButton,
+		QAbstractButton[themeID="vcamButton"] {
+			background-color: rgb(80, 50, 60);
+			border: 1px solid rgb(80, 50, 60);
+		}
+
+		QAbstractButton:hover#streamButton,
+		QAbstractButton:hover#recordButton,
+		QAbstractButton:hover[themeID="vcamButton"],
+		#controlsDockContents :hover[themeID="vcamButton"] {
+			background-color: rgb(180, 60, 90);
+			border: 1px solid rgb(180, 60, 90);
+		}
+
+		QAbstractButton:checked#streamButton,
+		QAbstractButton:checked#recordButton,
+		QAbstractButton:checked[themeID="vcamButton"],
+		#controlsDockContents :checked[themeID="vcamButton"] {
+			background-color: rgb(255, 0, 20);
+			border: 1px solid rgb(255, 0, 20);
+		}
+
+		QAbstractButton:checked:hover#streamButton,
+		QAbstractButton:checked:hover#recordButton:checked:hover,
+		QAbstractButton:checked:hover[themeID="vcamButton"],
+		#controlsDockContents :checked:hover[themeID="vcamButton"] {
+			background-color: rgb(255, 80, 120);
+			border: 1px solid rgb(255, 80, 120);
+		}
+	/* #endregion */
+
+	/* #region Volume Mixer */
+
+		/* Original Colors */
+		/* VolumeMeter {
+			qproperty-backgroundNominalColor: rgb(0, 128, 79);
+			qproperty-backgroundWarningColor: rgb(128, 57, 0);
+			qproperty-backgroundErrorColor: rgb(128, 9, 0);
+			qproperty-foregroundNominalColor: rgb(119, 255, 143);
+			qproperty-foregroundWarningColor: rgb(255, 157, 76);
+			qproperty-foregroundErrorColor: rgb(255, 89, 76);
+			qproperty-magnitudeColor: rgb(23, 36, 45);
+			qproperty-majorTickColor: rgb(239, 240, 241);
+			qproperty-minorTickColor: rgb(118, 121, 124);
+		} */
+
+		/* "Target Volume" Colors */
+		VolumeMeter {
+			qproperty-backgroundNominalColor: rgb(46, 93, 146);
+			qproperty-backgroundWarningColor: rgb(0, 128, 79);
+			qproperty-backgroundErrorColor: rgb(128, 9, 0);
+			qproperty-foregroundNominalColor: rgb(58, 187, 247);
+			qproperty-foregroundWarningColor: rgb(228, 255, 76);
+			qproperty-foregroundErrorColor: rgb(255, 89, 76);
+			qproperty-magnitudeColor: rgb(23, 36, 45);
+			qproperty-majorTickColor: rgb(239, 240, 241);
+			qproperty-minorTickColor: rgb(118, 121, 124);
+		}
+
+		#stackedMixerArea {
+			background-color: palette(shadow);
+			margin: 0px;
+		}
+
+		#stackedMixerArea QSlider:horizontal {
+			padding-right: 0px;
+		}
+
+		#stackedMixerArea QWidget {
+			background-color: transparent;
+		}
+
+		#hVolumeWidgets * > QWidget {
+			margin: 0px 4px 4px 0px;
+			border-radius: 6px;
+		}
+
+		#stackedMixerArea QPushButton[themeID="menuIconSmall"] {
+			border: 0px transparent;
+			background-color: transparent;
+			min-width: 0px;
+			width: 8px;
+			padding: 2px;
+
+		}
+
+		#hVolumeWidgets QPushButton/* [themeID="menuIconSmall"] */ {
+			margin: 0px 1px 0px 0px;
+		}
+
+		#hVolumeWidgets MuteCheckBox::indicator {
+			margin: 4px -6px 0px 0px;
+		}
+
+		#vVolumeWidgets QPushButton/* [themeID="menuIconSmall"] */ {
+			margin-left: 1px;
+			margin-right: 3px;
+		}
+
+		#stackedMixerArea QPushButton:hover[themeID="menuIconSmall"] {
+			background-color: palette(mid);
+			icon: url(./Mintchip/Controls/dots-vert-selected.svg);
+		}
+
+		#stackedMixerArea QPushButton:pressed[themeID="menuIconSmall"] {
+			background-color: palette(light);
+			icon: url(./Mintchip/Controls/dots-vert-hover.svg);
+		}
+	/* #endregion */
+
+	/* #region Settings Window */
+		.OBSBasicSettings > QListWidget {
+			max-width: 192px;
+			min-width: 192px;
+			qproperty-iconSize: 24px 24px; 
+		}
+
+		OBSBasicSettings {
+			qproperty-generalIcon: url(./Mintchip/Settings/cog.svg);
+			qproperty-streamIcon: url(./Mintchip/Settings/stream.svg);
+			qproperty-outputIcon: url(./Mintchip/Settings/output.svg);
+			qproperty-audioIcon: url(./Mintchip/Settings/sound.svg);
+			qproperty-videoIcon: url(./Mintchip/Settings/video.svg);
+			qproperty-hotkeysIcon: url(./Mintchip/Settings/keys.svg);
+			qproperty-advancedIcon: url(./Mintchip/Settings/advanced.svg);
+    		qproperty-accessibilityIcon: url(./Mintchip/Settings/access.svg);
+		}
+
+		#hotkeyPage QLabel {
+			padding-top: 4px;
+		}
+
+		.OBSHotkeyEdit {
+			min-width: 96px;
+		}
+
+		#hotkeyPage QPushButton {
+			margin-left: 8px;
+			max-width: 24px;
+			min-width: 24px;
+			min-height: 22px;
+			max-height: 22px;
+			padding: 2px 2px;
+		}
+	/* #endregion */
+
+	/* #region Toolbar Plugin */
+		#toolbarDisplay {
+			border: 1px solid palette(light);
+			background-color: palette(mid);
+			border-radius: 6px;
+		}
+
+		#toolbarContents {
+			background-color: palette(dark);
+		}
+
+		#toolbarDock #recordButton {
+			qproperty-icon: url(./Mintchip/Settings/output.svg);
+		}
+
+		#toolbarDock #floatButton {
+			qproperty-icon: url(./Mintchip/window.svg);
+		}
+
+		#toolbarDock #virtualCamButton {
+			qproperty-icon: url(./Mintchip/Sources/webcam.svg);
+		}
+	/* #endregion */
+
+/* #endregion */
+
+/* #region Special Configurations */
+	QLabel#scenesLabel,
+	QLabel#sourcesLabel,
+	QLabel#mixerLabel,
+	QLabel#sceneTransitionsLabel {
+		color: rgb(240, 240, 240); /* Pink (Secondary) */
+		margin-top: 5px;
+	}
+
+	/* warning and error */
+	QLabel#warningLabel {
+		color: rgb(255, 148, 194); /* Light Pink (Secondary Light) */
+		font-weight: bold;
+	}
+
+	QLabel#errorLabel {
+		color: rgb(240, 240, 240); /* Dark Pink (Secondary Dark) */
+		font-weight: bold;
+	}
+
+	QToolTip {
+		padding: 4px;
+		margin: 0px;
+		background-color: palette(dark);
+	}
+/* #endregion */
+
+/* #region Unused */
+
+/* #endregion */
+
+/*#endregion*/
